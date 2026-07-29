@@ -43,6 +43,7 @@ test("server-renders the editorial three-way comparison", async () => {
   assert.match(html, /评分口径/);
   assert.match(html, /WORK BUDDY/);
   assert.match(html, /TRAE/);
+  assert.match(html, /TRAE 跳一跳/);
   assert.match(html, /CODEX/);
   assert.match(html, /\/games\/work-buddy\/index\.html/);
   assert.match(html, /\/games\/trae\/index\.html/);

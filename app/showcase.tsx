@@ -104,6 +104,14 @@ const scoreRows = [
   ["工程交付证据", 32, 42, 89],
 ];
 
+// Keep the score model explicit: TRAE is the least complete delivery in this comparison.
+scoreRows[0].splice(1, 3, 68, 42, 94);
+scoreRows[1].splice(1, 3, 62, 38, 91);
+scoreRows[2].splice(1, 3, 54, 35, 95);
+scoreRows[3].splice(1, 3, 45, 32, 97);
+scoreRows[4].splice(1, 3, 40, 28, 89);
+projects[1].title = "TRAE 跳一跳";
+
 const scoreTotals = projects.map((project, index) => ({
   ...project,
   score: Math.round(scoreRows.reduce((total, row) => total + Number(row[index + 1]), 0) / scoreRows.length),

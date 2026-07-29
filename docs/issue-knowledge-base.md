@@ -69,3 +69,13 @@
 - Resolution: added a score panel with five explicit dimensions, 0-100 totals, animated rings, weighted progress bars, and a scoring disclaimer that keeps unverified real-device claims bounded.
 - Regression evidence: score assertions pass in rendered-HTML tests; desktop/mobile score captures are stored in `design-qa/`.
 - Prevention: dense comparison pages should provide both a quick scan summary and the underlying evidence table, with scoring criteria visible beside the scores.
+
+## WEB-008 - TRAE card title and score ranking contradicted the actual build
+
+- Status: resolved
+- Found during: user review of the scored comparison
+- Symptom: the TRAE card displayed a Codex title, and TRAE was scored above the simpler delivery even though its verified handoff evidence was weaker.
+- Root cause: the comparison data was copied forward without a cross-check between maker, title, route, and score model.
+- Resolution: corrected the TRAE display title and lowered its five score dimensions so the aggregate ranking reflects the evidence boundary.
+- Regression evidence: rendered-HTML tests assert the TRAE title; the next deployed score panel must show TRAE as the lowest total.
+- Prevention: every comparison row must be checked as a tuple of maker, title, game route, evidence, and score before publishing.
