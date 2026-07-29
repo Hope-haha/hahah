@@ -3,6 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function publicUrl(path: string) {
+  return `${publicBasePath}${path}`;
+}
+
 export type ProjectKey = "work-buddy" | "trea" | "codex";
 
 type Project = {
@@ -124,7 +130,7 @@ export function ComparisonHome() {
           <article className={`play-stage tone-${project.key}`} key={project.key}>
             <div className="phone-shell">
               <div className="phone-bar"><span /><span>试玩预览</span><span /></div>
-              <iframe title={`${project.maker} 游戏预览`} src={project.game} />
+              <iframe title={`${project.maker} 游戏预览`} src={publicUrl(project.game)} />
             </div>
             <div className="play-copy">
               <span className="project-no">{project.number} / {project.maker}</span>
@@ -133,7 +139,7 @@ export function ComparisonHome() {
               <p>{project.summary}</p>
               <div className="fact-chips">{project.facts.map((fact) => <span key={fact}>{fact}</span>)}</div>
               <div className="action-stack">
-                <a className="button primary" href={project.game} target="_blank" rel="noreferrer">全屏开始玩 ↗</a>
+                <a className="button primary" href={publicUrl(project.game)} target="_blank" rel="noreferrer">全屏开始玩 ↗</a>
                 <Link className="text-link" href={`/${project.key}`}>查看这份成果的完整拆解 →</Link>
               </div>
             </div>
@@ -178,8 +184,8 @@ export function ProjectShowcase({ projectKey }: { projectKey: ProjectKey }) {
         <div className="detail-orbit"><i /><i /><i /><span>JUMP</span></div>
       </section>
       <section className="game-room" id="game">
-        <div className="game-frame"><iframe title={`${project.title} 在线试玩`} src={project.game} /></div>
-        <div className="game-tools"><span>ONLINE PLAYABLE BUILD</span><p>在上方区域直接操作，或打开独立页面获得完整屏幕和声音体验。</p><a className="button primary" href={project.game} target="_blank" rel="noreferrer">打开独立游戏网页 ↗</a></div>
+        <div className="game-frame"><iframe title={`${project.title} 在线试玩`} src={publicUrl(project.game)} /></div>
+        <div className="game-tools"><span>ONLINE PLAYABLE BUILD</span><p>在上方区域直接操作，或打开独立页面获得完整屏幕和声音体验。</p><a className="button primary" href={publicUrl(project.game)} target="_blank" rel="noreferrer">打开独立游戏网页 ↗</a></div>
       </section>
       <section className="detail-grid">
         <article><span>事实</span><h2>这份成果里<br />实际有什么</h2><ul>{project.facts.map(item => <li key={item}>{item}</li>)}</ul></article>
