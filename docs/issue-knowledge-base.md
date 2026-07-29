@@ -39,3 +39,13 @@
 - Resolution: keyed each cell by its row dimension and column index.
 - Regression evidence: the final build and rendered-HTML tests pass after the change.
 - Prevention: never use display text as a key when sibling values may repeat.
+
+## WEB-005 — Comparison page labels outcomes without explaining the experiment
+
+- Status: resolved
+- Found during: user review
+- Symptom: the page showed three games and a short matrix, but a first-time visitor could not tell what was held constant, what each tool actually did, or how to interpret the differences.
+- Root cause: the first version optimized for visual compactness and reduced the content to slogans and short labels.
+- Resolution: rewrote the hero in plain language, added experiment conditions and a reading guide, explained each result's focus and suitable use case, added evidence-based verdicts and trade-offs, and expanded the individual result pages with implementation rationale and play instructions.
+- Regression evidence: rendered-HTML tests assert the experiment explanation, interpretation section, shared input, shared workflow, and three playable outcomes.
+- Prevention: every comparison page must explain the input, controlled conditions, evaluation method, evidence boundary, and practical takeaway before presenting a winner-like conclusion.
