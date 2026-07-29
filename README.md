@@ -4,10 +4,10 @@
 
 ## 在线查看
 
-- [打开完整对比网页](https://jump-lab-three-2026.h13426558995.chatgpt.site)
-- [Work Buddy 成果页](https://jump-lab-three-2026.h13426558995.chatgpt.site/work-buddy)
-- [Trea 成果页](https://jump-lab-three-2026.h13426558995.chatgpt.site/trea)
-- [Codex 成果页](https://jump-lab-three-2026.h13426558995.chatgpt.site/codex)
+- [打开完整对比网页](https://hope-haha.github.io/hahah/)
+- [Work Buddy 成果页](https://hope-haha.github.io/hahah/work-buddy/)
+- [Trea 成果页](https://hope-haha.github.io/hahah/trea/)
+- [Codex 成果页](https://hope-haha.github.io/hahah/codex/)
 
 每一份成果页都内嵌了可操作版本，并提供独立全屏试玩入口。
 
