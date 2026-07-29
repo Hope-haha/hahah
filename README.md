@@ -1,12 +1,12 @@
 # 跳一跳：三种交付成果对比
 
-同一份微信小游戏工作流、同一个“做一个像跳一跳的小游戏”想法，分别展示 Work Buddy、Trea 与 Codex 的执行结果。
+同一份微信小游戏工作流、同一个“做一个像跳一跳的小游戏”想法，分别展示 Work Buddy、TRAE 与 Codex 的执行结果。
 
 ## 在线查看
 
 - [打开完整对比网页](https://hope-haha.github.io/hahah/)
 - [Work Buddy 成果页](https://hope-haha.github.io/hahah/work-buddy/)
-- [Trea 成果页](https://hope-haha.github.io/hahah/trea/)
+- [TRAE 成果页](https://hope-haha.github.io/hahah/trae/)
 - [Codex 成果页](https://hope-haha.github.io/hahah/codex/)
 
 每一份成果页都内嵌了可操作版本，并提供独立全屏试玩入口。
@@ -30,7 +30,7 @@ npm run build
 
 - `app/`：对比总览与三份独立成果页
 - `public/games/work-buddy/`：Work Buddy 网页游戏
-- `public/games/trea/`：Trea 网页游戏
+- `public/games/trae/`：TRAE 网页游戏
 - `public/games/codex/`：Codex“灯跃浮岛”网页交互原型构建产物
 
 ## 证据边界
