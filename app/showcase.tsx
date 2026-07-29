@@ -96,6 +96,19 @@ const qualitativeRows = [
   ["后续产品空间", "中", "中", "高"],
 ];
 
+const scoreRows = [
+  ["核心玩法完成度", 58, 72, 94],
+  ["首次操作清晰度", 64, 78, 91],
+  ["反馈层次", 46, 76, 95],
+  ["视觉系统", 36, 58, 97],
+  ["工程交付证据", 32, 42, 89],
+];
+
+const scoreTotals = projects.map((project, index) => ({
+  ...project,
+  score: Math.round(scoreRows.reduce((total, row) => total + Number(row[index + 1]), 0) / scoreRows.length),
+}));
+
 function Brand({ compact = false }: { compact?: boolean }) {
   return <Link className="brand" href="/"><span className="brand-mark">J</span>{!compact && <span>JUMP LAB / 03</span>}</Link>;
 }
@@ -143,6 +156,17 @@ export function ComparisonHome() {
 
       <section className="report-section" id="matrix">
         <SectionLabel>03 / LINE-BY-LINE</SectionLabel>
+        <div className="score-panel" aria-label="三种交付评分">
+          <div className="score-panel-heading"><div><span className="score-kicker">QUANTIFIED READ</span><h3>把差别换成分数</h3></div><p>评分只反映这次已交付成果的完成度，不代表最终产品质量，也不替代真机验收。</p></div>
+          <div className="score-grid">
+            {scoreTotals.map((project, index) => <article className={`score-card tone-${project.key}`} key={project.key}>
+              <div className="score-card-top"><span>{project.maker}</span><b>{String(project.score).padStart(2, "0")}</b></div>
+              <div className="score-ring" style={{ "--score": `${project.score * 3.6}deg` } as React.CSSProperties}><strong>{project.score}</strong><small>/100</small></div>
+              <div className="score-bars">{scoreRows.map((row) => <div className="score-bar" key={row[0]}><span>{row[0]}</span><i><em style={{ width: `${row[index + 1]}%` }} /></i><b>{row[index + 1]}</b></div>)}</div>
+            </article>)}
+          </div>
+          <div className="score-note"><span>评分口径</span><p>玩法可玩性 25% · 操作与反馈 25% · 视觉完成度 20% · 工程交付 20% · 验证证据 10%</p></div>
+        </div>
         <div className="section-heading"><h2>逐项看，差别才真正出现</h2><p>同一个“跳一跳”标签下面，第一次操作、反馈、工程证据和正式真机边界都不一样。</p></div>
         <div className="editorial-table" role="table"><div className="table-row table-head"><b>比较维度</b>{projects.map((p) => <b key={p.key}>{p.maker}</b>)}</div>{comparisonRows.map((row) => <div className="table-row" role="row" key={row[0]}>{row.map((cell, index) => <span className={index === 0 ? "table-dimension" : ""} key={`${row[0]}-${index}`}>{cell}</span>)}</div>)}</div>
       </section>

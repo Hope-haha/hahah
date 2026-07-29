@@ -12,6 +12,7 @@
 - Reference report capture: `design-audit/reference-site-desktop.png`, `design-audit/reference-site-mobile.png`
 - Editorial implementation capture: `design-qa/editorial-implementation-desktop.png`, `design-qa/editorial-implementation-mobile.png`, `design-qa/editorial-codex-detail.png`
 - Same-viewport editorial comparison input: `design-qa/reference-vs-editorial.png`
+- Scored comparison captures: `design-qa/score-desktop.png`, `design-qa/score-mobile.png`
 - Desktop viewport: 1440 × 1024
 - Mobile viewport: 390 × 844
 
@@ -45,5 +46,6 @@
 - Replaced slogan-only comparison copy with plain-language context, practical verdicts, and evidence boundaries after user review found the page too terse.
 - Rebuilt the information architecture around the supplied reference report after visual review found the centered triptych too unlike the target.
 - Added explicit mobile word-breaking to prevent long Chinese editorial headings from overflowing the viewport.
+- Added animated score rings and weighted breakdown bars, with reduced-motion support and a narrow-phone stacked layout.
 
 final result: passed

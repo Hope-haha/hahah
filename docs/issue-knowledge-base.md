@@ -59,3 +59,13 @@
 - Resolution: captured desktop and mobile source screenshots, rebuilt the home page as a six-part editorial report, and kept the three real game builds as the evidence layer.
 - Regression evidence: `design-qa/reference-vs-editorial.png`, `design-qa/editorial-implementation-mobile.png`, and 2/2 rendered-HTML tests pass.
 - Prevention: before adapting a reference, record its section sequence, density, responsive behavior, and evidence pattern; acceptance must compare those traits at the same viewport.
+
+## WEB-007 - Line-by-line matrix had no quick quantitative read
+
+- Status: resolved
+- Found during: user review of the comparison matrix
+- Symptom: the table showed facts but required reading every row before a visitor could understand the relative completion level.
+- Root cause: qualitative evidence and quantitative summary were mixed into one dense table.
+- Resolution: added a score panel with five explicit dimensions, 0-100 totals, animated rings, weighted progress bars, and a scoring disclaimer that keeps unverified real-device claims bounded.
+- Regression evidence: score assertions pass in rendered-HTML tests; desktop/mobile score captures are stored in `design-qa/`.
+- Prevention: dense comparison pages should provide both a quick scan summary and the underlying evidence table, with scoring criteria visible beside the scores.

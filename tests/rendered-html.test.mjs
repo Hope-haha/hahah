@@ -38,6 +38,9 @@ test("server-renders the editorial three-way comparison", async () => {
   assert.match(html, /逐项看，差别才真正出现/);
   assert.match(html, /“有文件”不等于“走完流程”/);
   assert.match(html, /最好的第四版，不该从零开始/);
+  assert.match(html, /QUANTIFIED READ/);
+  assert.match(html, /把差别换成分数/);
+  assert.match(html, /评分口径/);
   assert.match(html, /WORK BUDDY/);
   assert.match(html, /TRAE/);
   assert.match(html, /CODEX/);
