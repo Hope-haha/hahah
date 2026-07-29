@@ -23,19 +23,21 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders the centered three-way comparison", async () => {
+test("server-renders the editorial three-way comparison", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>同一条起跑线，三种交付落点<\/title>/);
-  assert.match(html, /同一个小游戏需求，三种交付结果/);
-  assert.match(html, /这个页面到底在比较什么/);
-  assert.match(html, /没有绝对赢家，只有不同优先级/);
-  assert.match(html, /同一句需求/);
-  assert.match(html, /同一套工作流/);
-  assert.match(html, /三个可玩结果/);
+  assert.match(html, /<title>/);
+  assert.match(html, /同一工作流/);
+  assert.match(html, /同一个跳一跳小游戏/);
+  assert.match(html, /为什么做成了三种产品/);
+  assert.match(html, /同一个起点，不同的优先级/);
+  assert.match(html, /没有分数，只有取舍/);
+  assert.match(html, /逐项看，差别才真正出现/);
+  assert.match(html, /“有文件”不等于“走完流程”/);
+  assert.match(html, /最好的第四版，不该从零开始/);
   assert.match(html, /WORK BUDDY/);
   assert.match(html, /TRAE/);
   assert.match(html, /CODEX/);

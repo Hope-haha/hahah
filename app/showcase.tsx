@@ -3,10 +3,7 @@
 import Link from "next/link";
 
 const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-function publicUrl(path: string) {
-  return `${publicBasePath}${path}`;
-}
+const publicUrl = (path: string) => `${publicBasePath}${path}`;
 
 export type ProjectKey = "work-buddy" | "trae" | "codex";
 
@@ -31,17 +28,12 @@ type Project = {
 
 export const projects: Project[] = [
   {
-    key: "work-buddy",
-    number: "01",
-    maker: "WORK BUDDY",
-    title: "财神跳一跳",
-    subtitle: "轻量直接，最接近经典玩法",
-    game: "/games/work-buddy/index.html",
+    key: "work-buddy", number: "01", maker: "WORK BUDDY", title: "财神跳一跳",
+    subtitle: "轻量直接，最接近经典玩法", game: "/games/work-buddy/index.html",
     summary: "单文件 Canvas 游戏，用最短路径完成连续蓄力跳跃。",
     focus: "先把“蓄力—起跳—落点—继续”的核心循环做出来",
     playLoop: "按住蓄力，松手起跳，落到下一块平台继续得分",
-    delivery: "一个 HTML 文件，打开即可运行",
-    bestFor: "想快速验证经典跳一跳玩法的人",
+    delivery: "一个 HTML 文件，打开即可运行", bestFor: "想快速验证经典跳一跳玩法的人",
     explanation: "Work Buddy 选择了最短交付路径：不扩展世界观，也不增加复杂系统，先保证玩家一打开就知道怎么玩。它的价值在于速度和清晰度，代价是视觉表达与工程证据较少。",
     verdict: "三者中最轻、最快，也最像一个玩法验证版。",
     facts: ["1 个可运行 HTML", "Canvas 绘制", "本地最高分", "连续平台生成"],
@@ -49,17 +41,12 @@ export const projects: Project[] = [
     limits: ["视觉资产较少，品牌辨识度弱", "交付文档与游戏代码分离", "缺少独立自动化测试文件"],
   },
   {
-    key: "trae",
-    number: "02",
-    maker: "TRAE",
-    title: "Codex 跳一跳",
-    subtitle: "反馈更密，街机感更完整",
-    game: "/games/trae/index.html",
+    key: "trae", number: "02", maker: "TRAE", title: "Codex 跳一跳",
+    subtitle: "反馈更密，街机感更完整", game: "/games/trae/index.html",
     summary: "加入开场面板、蓄力条、连击、粒子与音效反馈。",
     focus: "在经典连续跳跃上补足即时反馈和街机节奏",
     playLoop: "开始游戏，观察蓄力条，连续落点触发连击和声效",
-    delivery: "一个 HTML 文件，同时支持键盘与触屏",
-    bestFor: "更看重操作反馈和游戏氛围的人",
+    delivery: "一个 HTML 文件，同时支持键盘与触屏", bestFor: "更看重操作反馈和游戏氛围的人",
     explanation: "TRAE 沿用经典蓄力跳跃，但把重点放在玩家每次操作后的反馈：蓄力过程更明确，成功和连击更有存在感，声音与粒子让游戏更像一个完整街机小品。",
     verdict: "三者中反馈最密，试玩时最容易立刻感到“像游戏”。",
     facts: ["1 个可运行 HTML", "Canvas + WebAudio", "连击反馈", "键盘与触屏"],
@@ -67,17 +54,12 @@ export const projects: Project[] = [
     limits: ["文件标题仍保留 Codex 命名", "成果来源目录混有其他项目", "缺少对应的独立测试证据"],
   },
   {
-    key: "codex",
-    number: "03",
-    maker: "CODEX",
-    title: "灯跃浮岛",
-    subtitle: "原创选路，产品化最完整",
-    game: "/games/codex/index.html",
+    key: "codex", number: "03", maker: "CODEX", title: "灯跃浮岛",
+    subtitle: "原创选路，产品化最完整", game: "/games/codex/index.html",
     summary: "按住纸灯蓄力，左右选择路线，在连续浮岛间推进。",
     focus: "把视觉世界观、路线选择和交付流程一起产品化",
     playLoop: "先选稳行或冒险路线，再按住纸灯蓄力并松手起跳",
-    delivery: "微信小游戏源码、网页原型、视觉素材、测试与问题库",
-    bestFor: "希望继续做成正式产品并保留扩展空间的人",
+    delivery: "微信小游戏源码、网页原型、视觉素材、测试与问题库", bestFor: "希望继续做成正式产品并保留扩展空间的人",
     explanation: "Codex 没有只复刻经典玩法，而是把纸灯、折纸浮岛和左右选路组合成新的决策机制；同时补齐文档、测试、问题库和发布准备。网页里展示的是交互原型，正式微信真机仍需 AppID 与扫码验证。",
     verdict: "三者中产品表达最完整，但交付体量和后续验证成本也最高。",
     facts: ["微信小游戏源码", "网页交互原型", "3 张原创视觉素材", "纯逻辑与启动测试"],
@@ -86,159 +68,99 @@ export const projects: Project[] = [
   },
 ];
 
-const dimensions = [
-  ["一句话理解", "最快得到可玩版本", "把反馈做得更像游戏", "把玩法做成完整产品方向"],
-  ["核心循环", "连续蓄力跳跃", "连续蓄力跳跃", "蓄力 + 左右选路"],
-  ["视觉表达", "几何平台", "深色技术风", "折纸浮岛世界"],
+const comparisonRows = [
+  ["核心玩法", "连续蓄力跳跃", "连续蓄力跳跃", "蓄力 + 左右选路"],
+  ["第一次操作", "按住，松手", "按住，看蓄力条，松手", "先选路线，再按住纸灯"],
   ["反馈层次", "得分 / 失败", "蓄力 / 连击 / 音效", "路线 / 灯火 / 救援"],
-  ["工程形态", "单 HTML", "单 HTML", "小游戏源码 + Vite 原型"],
-  ["验证证据", "可运行页面", "可运行页面", "测试 + 检查脚本 + 问题库"],
-  ["主要取舍", "速度优先，表现较轻", "体验优先，证据较少", "完整度优先，成本更高"],
+  ["视觉资产", "几何平台", "深色技术风", "折纸浮岛世界"],
+  ["工程交付", "单 HTML", "单 HTML", "小游戏源码 + Vite 原型"],
+  ["文档与问题库", "未见独立交付", "未见独立交付", "有文档、问题库与回归记录"],
+  ["测试证据", "可运行页面", "可运行页面", "测试 + 检查脚本"],
+  ["正式真机", "未提供", "未提供", "仍需 AppID 与扫码验证"],
+  ["适合阶段", "玩法验证", "试玩体验打磨", "产品化继续开发"],
 ];
 
-const experimentSteps = [
-  ["01 / 输入相同", "三者收到的是同一句需求：做一个像“跳一跳”的小游戏。"],
-  ["02 / 流程相同", "都按照需求梳理、玩法设计、视觉实现、开发、测试和交付的顺序推进。"],
-  ["03 / 只看成果", "比较页面只采用实际能打开、能试玩或有文件证据的内容，不替任何一方补推测。"],
+const evidenceRows = [
+  ["01", "需求理解", "能玩到经典跳一跳循环", "能玩到经典跳一跳循环", "重新定义为纸灯与浮岛选路"],
+  ["02", "视觉实现", "几何平台与角色", "深色技术风界面", "折纸夜景、浮岛与纸灯素材"],
+  ["03", "交互实现", "连续蓄力跳跃", "蓄力、连击、音效反馈", "稳行/冒险路线 + 蓄力跳跃"],
+  ["04", "验证方式", "页面可运行", "页面可运行", "测试、检查脚本、问题库、回归证据"],
+  ["05", "交付边界", "网页版本", "网页版本", "网页原型 + 微信源码，真机待用户操作"],
+];
+
+const qualitativeRows = [
+  ["核心玩法完成度", "高", "高", "高"],
+  ["即时反馈密度", "低", "高", "中"],
+  ["视觉系统完整度", "低", "中", "高"],
+  ["工程证据密度", "低", "低", "高"],
+  ["后续产品空间", "中", "中", "高"],
 ];
 
 function Brand({ compact = false }: { compact?: boolean }) {
-  return (
-    <Link className="brand" href="/">
-      <span className="brand-mark">J</span>
-      {!compact && <span>JUMP LAB / 03</span>}
-    </Link>
-  );
+  return <Link className="brand" href="/"><span className="brand-mark">J</span>{!compact && <span>JUMP LAB / 03</span>}</Link>;
+}
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return <p className="section-label">{children}</p>;
 }
 
 export function ComparisonHome() {
   return (
-    <main>
-      <header className="topbar">
-        <div className="topbar-inner">
-          <Brand />
-          <nav>
-            <a href="#play">试玩</a>
-            <a href="#compare">对比</a>
-            <span className="online-status">3 个版本在线</span>
-          </nav>
-        </div>
-      </header>
+    <main className="report-site">
+      <header className="topbar"><div className="topbar-inner"><Brand /><nav><a href="#play">成果</a><a href="#matrix">逐项对比</a><span className="online-status">3 个版本在线</span></nav></div></header>
 
-      <section className="comparison-hero" id="play">
-        <div className="hero-intro">
-          <p className="eyebrow">AI 小游戏交付对比实验</p>
-          <h1>同一个小游戏需求，三种交付结果</h1>
-          <p className="hero-summary">我们把“做一个像跳一跳的小游戏”交给 Work Buddy、TRAE 和 Codex，并要求它们沿用同一套工作流。你可以先试玩三个成品，再比较它们在玩法、视觉、工程和验证方式上的差别。</p>
-          <div className="hero-points" aria-label="实验条件">
-            <span>同一句需求</span>
-            <span>同一套工作流</span>
-            <span>三个可玩结果</span>
-          </div>
+      <section className="report-hero">
+        <div className="hero-copy">
+          <SectionLabel>PROJECT REVIEW / 2026.07.29</SectionLabel>
+          <h1>同一工作流，<br />同一个跳一跳小游戏，<br /><em>为什么做成了三种产品？</em></h1>
+          <p>同一句需求，分别交给 Work Buddy、TRAE 和 Codex。这里不比较宣传语，只比较打开后能玩到的东西、实际交付的文件，以及还没有被证明的部分。</p>
         </div>
-
-        <div className="triptych-grid">
-          {projects.map((project) => (
-            <article className={`triptych-card tone-${project.key}`} key={project.key}>
-              <header className="triptych-heading">
-                <span>{project.number}</span>
-                <h2>{project.maker}</h2>
-              </header>
-              <div className="preview-stage">
-                <iframe
-                  title={`${project.maker} 游戏预览`}
-                  src={publicUrl(project.game)}
-                  loading="lazy"
-                  tabIndex={-1}
-                />
-              </div>
-              <div className="triptych-copy">
-                <h3>{project.subtitle}</h3>
-                <p>{project.summary}</p>
-                <dl>
-                  <div><dt>重点</dt><dd>{project.focus}</dd></div>
-                  <div><dt>适合</dt><dd>{project.bestFor}</dd></div>
-                </dl>
-              </div>
-              <div className="triptych-actions">
-                <a className="play-link" href={publicUrl(project.game)} target="_blank" rel="noreferrer">直接试玩</a>
-                <Link className="detail-link" href={`/${project.key}`}>查看成果</Link>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <a className="button primary compare-cta" href="#compare">查看完整对比</a>
+        <div className="hero-index"><strong>03</strong><span>COMPARED<br />BUILDS</span></div>
       </section>
 
-      <section className="experiment-section" aria-labelledby="experiment-title">
-        <div className="compact-heading">
-          <p className="eyebrow">CONTEXT / 先看懂这次实验</p>
-          <h2 id="experiment-title">这个页面到底在比较什么？</h2>
-          <p>不是比较三张静态效果图，也不是比较谁写得更会宣传，而是观察同一个模糊想法经过同一套产品工作流后，最终会变成怎样的可运行成果。</p>
-        </div>
-        <div className="experiment-grid">
-          {experimentSteps.map(([title, copy]) => (
-            <article key={title}><strong>{title}</strong><p>{copy}</p></article>
-          ))}
-        </div>
-        <div className="reading-guide">
-          <strong>建议这样看</strong>
-          <ol>
-            <li>先各试玩 30 秒，感受操作和反馈。</li>
-            <li>再看下方表格，理解每个版本把时间花在了哪里。</li>
-            <li>最后打开成果页，查看真实交付、优势和限制。</li>
-          </ol>
+      <section className="report-section" id="play">
+        <SectionLabel>01 / DELIVERED BUILDS</SectionLabel>
+        <div className="section-heading"><h2>同一个起点，不同的优先级</h2><p>先各试玩一次，再看它们把时间花在了哪里。</p></div>
+        <div className="build-grid">
+          {projects.map((project) => <article className={`build-card tone-${project.key}`} key={project.key}>
+            <div className="build-card-top"><span>{project.number}</span><small>网页可玩</small></div>
+            <h3>{project.title}</h3><p className="build-maker">{project.maker}</p>
+            <div className="build-preview"><iframe title={`${project.maker} 游戏预览`} src={publicUrl(project.game)} loading="lazy" tabIndex={-1} /></div>
+            <p className="build-summary">{project.summary}</p>
+            <div className="build-stats"><div><b>重点</b><span>{project.focus}</span></div><div><b>交付</b><span>{project.delivery}</span></div></div>
+            <p className="build-verdict">{project.verdict}</p>
+            <a className="build-action" href={publicUrl(project.game)} target="_blank" rel="noreferrer">打开并试玩 ↗</a>
+          </article>)}
         </div>
       </section>
 
-      <section className="comparison-section" id="compare">
-        <div className="compact-heading">
-          <p className="eyebrow">RESULT / 结果怎么理解</p>
-          <h2>没有绝对赢家，只有不同优先级</h2>
-          <p>Work Buddy 优先“尽快可玩”，TRAE 优先“反馈完整”，Codex 优先“产品化与可继续开发”。下面逐项说明差别来自哪里。</p>
-        </div>
-        <div className="verdict-grid">
-          {projects.map((project) => (
-            <article className={`tone-${project.key}`} key={project.key}>
-              <span>{project.number} / {project.maker}</span>
-              <strong>{project.verdict}</strong>
-            </article>
-          ))}
-        </div>
-        <div className="matrix" role="table" aria-label="三套成果对比">
-          <div className="matrix-row matrix-head" role="row">
-            <b>对比维度</b>
-            {projects.map((project) => <b key={project.key}>{project.maker}</b>)}
-          </div>
-          {dimensions.map((row) => (
-            <div className="matrix-row" role="row" key={row[0]}>
-              {row.map((cell, index) => <span key={`${row[0]}-${index}`} className={index === 0 ? "dimension" : ""}>{cell}</span>)}
-            </div>
-          ))}
-        </div>
-        <p className="evidence-note">证据边界：这里只陈述三个成果目录中实际可见的代码、页面、文档和测试。网页能运行不等于微信真机已经通过；没有证据的能力不作推定。</p>
+      <section className="dark-section" id="signal">
+        <SectionLabel>02 / QUALITATIVE SIGNAL</SectionLabel>
+        <div className="section-heading"><h2>没有分数，只有取舍</h2><p>这是基于实际页面、代码和文档的定性判断，不是虚构的性能评分。</p></div>
+        <div className="signal-list">{qualitativeRows.map((row) => <div className="signal-row" key={row[0]}><b>{row[0]}</b>{row.slice(1).map((value, index) => <span className={`signal-value signal-${value}`} key={`${row[0]}-${index}`}>{value}</span>)}</div>)}</div>
+        <div className="signal-legend"><span>WORK BUDDY</span><span>TRAE</span><span>CODEX</span></div>
       </section>
 
-      <section className="deep-dive-section">
-        <div className="compact-heading">
-          <p className="eyebrow">DEEP DIVE / 继续看</p>
-          <h2>打开每一份完整成果</h2>
-          <p>成果页会说明这个版本的实现思路、实际交付、适合什么场景，以及目前还不能证明什么。</p>
-        </div>
-        <div className="deep-dive-grid">
-          {projects.map((project) => (
-            <Link className={`deep-dive-row tone-${project.key}`} href={`/${project.key}`} key={project.key}>
-              <span className="project-no">{project.number}</span>
-              <strong>{project.maker}</strong>
-              <span><b>{project.title}</b><small>{project.verdict}</small></span>
-              <em>查看成果</em>
-            </Link>
-          ))}
-        </div>
+      <section className="report-section" id="matrix">
+        <SectionLabel>03 / LINE-BY-LINE</SectionLabel>
+        <div className="section-heading"><h2>逐项看，差别才真正出现</h2><p>同一个“跳一跳”标签下面，第一次操作、反馈、工程证据和正式真机边界都不一样。</p></div>
+        <div className="editorial-table" role="table"><div className="table-row table-head"><b>比较维度</b>{projects.map((p) => <b key={p.key}>{p.maker}</b>)}</div>{comparisonRows.map((row) => <div className="table-row" role="row" key={row[0]}>{row.map((cell, index) => <span className={index === 0 ? "table-dimension" : ""} key={`${row[0]}-${index}`}>{cell}</span>)}</div>)}</div>
       </section>
 
-      <footer><Brand compact /><p>同一工作流实验 · 2026</p><a href="#play">回到顶部</a></footer>
+      <section className="report-section workflow-section">
+        <SectionLabel>04 / EVIDENCE TRAIL</SectionLabel>
+        <div className="section-heading"><h2>“有文件”不等于“走完流程”</h2><p>把结果拆回需求、视觉、交互、验证和交付边界，才能知道哪些已经完成，哪些仍要用户本人参与。</p></div>
+        <div className="editorial-table evidence-table" role="table"><div className="table-row table-head"><b>步骤</b><b>检查点</b>{projects.map((p) => <b key={p.key}>{p.maker}</b>)}</div>{evidenceRows.map((row) => <div className="table-row" role="row" key={row[0]}>{row.map((cell, index) => <span className={index < 2 ? "table-dimension" : ""} key={`${row[0]}-${index}`}>{cell}</span>)}</div>)}</div>
+      </section>
+
+      <section className="dark-section recommendation-section">
+        <SectionLabel>05 / RECOMMENDATION</SectionLabel>
+        <div className="recommendation-grid"><div><strong>V2</strong><h2>最好的第四版，不该从零开始</h2><p>保留 Work Buddy 的核心循环，吸收 TRAE 的反馈层，再用 Codex 的视觉系统和问题库把它推进到可继续开发的版本。</p></div><ol>{projects.map((p) => <li key={p.key}><b>{p.maker}</b><span>{p.verdict}</span></li>)}</ol></div>
+      </section>
+
+      <section className="report-section final-section"><SectionLabel>06 / HOW TO READ THIS</SectionLabel><div className="final-grid"><article><b>看玩法</b><p>三个入口都能直接试玩，先感受“按住—松手—落点”的差别。</p></article><article><b>看证据</b><p>成果页会标出实际文件、测试、问题库和仍需真机验证的边界。</p></article><article><b>看取舍</b><p>这里没有单一冠军，只有对当前阶段更合适的交付方式。</p></article></div></section>
+
+      <footer><Brand compact /><p>JUMP LAB / WORKFLOW COMPARISON</p><a href="#play">回到顶部 ↑</a></footer>
     </main>
   );
 }
@@ -246,52 +168,12 @@ export function ComparisonHome() {
 export function ProjectShowcase({ projectKey }: { projectKey: ProjectKey }) {
   const project = projects.find((item) => item.key === projectKey)!;
   const otherProjects = projects.filter((item) => item.key !== projectKey);
-
-  return (
-    <main className={`detail-page tone-${project.key}`}>
-      <header className="topbar">
-        <div className="topbar-inner">
-          <Brand />
-          <nav><Link href="/">返回总览</Link><a href="#game">立即试玩</a></nav>
-        </div>
-      </header>
-
-      <section className="detail-hero">
-        <span className="project-no">{project.number} / {project.maker}</span>
-        <h1>{project.title}</h1>
-        <p>{project.subtitle}</p>
-        <div className="detail-intro">
-          <strong>{project.verdict}</strong>
-          <p>{project.explanation}</p>
-        </div>
-      </section>
-
-      <section className="game-room" id="game">
-        <div className="game-frame"><iframe title={`${project.title} 在线试玩`} src={publicUrl(project.game)} /></div>
-        <div className="game-tools">
-          <span>ONLINE PLAYABLE BUILD</span>
-          <h2>怎么玩</h2>
-          <p>{project.playLoop}</p>
-          <dl>
-            <div><dt>交付形式</dt><dd>{project.delivery}</dd></div>
-            <div><dt>更适合</dt><dd>{project.bestFor}</dd></div>
-          </dl>
-          <a className="button primary" href={publicUrl(project.game)} target="_blank" rel="noreferrer">打开独立游戏网页</a>
-        </div>
-      </section>
-
-      <section className="detail-grid">
-        <article><span>事实</span><h2>实际交付</h2><ul>{project.facts.map((item) => <li key={item}>{item}</li>)}</ul></article>
-        <article><span>优势</span><h2>做得好的地方</h2><ul>{project.strengths.map((item) => <li key={item}>{item}</li>)}</ul></article>
-        <article><span>边界</span><h2>仍然存在的限制</h2><ul>{project.limits.map((item) => <li key={item}>{item}</li>)}</ul></article>
-      </section>
-
-      <section className="next-projects">
-        <span>NEXT / 继续比较</span>
-        <div>{otherProjects.map((item) => <Link href={`/${item.key}`} key={item.key}><small>{item.number}</small>{item.maker}</Link>)}</div>
-      </section>
-
-      <footer><Brand compact /><p>{project.maker} 成果展示</p><Link href="/">对比全部版本</Link></footer>
-    </main>
-  );
+  return <main className={`detail-page tone-${project.key}`}>
+    <header className="topbar"><div className="topbar-inner"><Brand /><nav><Link href="/">返回总览</Link><a href="#game">立即试玩</a></nav></div></header>
+    <section className="detail-hero"><SectionLabel>{project.number} / {project.maker}</SectionLabel><h1>{project.title}</h1><p>{project.subtitle}</p><div className="detail-intro"><strong>{project.verdict}</strong><p>{project.explanation}</p></div></section>
+    <section className="game-room" id="game"><div className="game-frame"><iframe title={`${project.title} 在线试玩`} src={publicUrl(project.game)} /></div><div className="game-tools"><SectionLabel>ONLINE PLAYABLE BUILD</SectionLabel><h2>怎么玩</h2><p>{project.playLoop}</p><dl><div><dt>交付形式</dt><dd>{project.delivery}</dd></div><div><dt>更适合</dt><dd>{project.bestFor}</dd></div></dl><a className="button primary" href={publicUrl(project.game)} target="_blank" rel="noreferrer">打开独立游戏网页</a></div></section>
+    <section className="detail-grid"><article><SectionLabel>FACTS</SectionLabel><h2>实际交付</h2><ul>{project.facts.map((item) => <li key={item}>{item}</li>)}</ul></article><article><SectionLabel>STRENGTHS</SectionLabel><h2>做得好的地方</h2><ul>{project.strengths.map((item) => <li key={item}>{item}</li>)}</ul></article><article><SectionLabel>LIMITS</SectionLabel><h2>仍然存在的限制</h2><ul>{project.limits.map((item) => <li key={item}>{item}</li>)}</ul></article></section>
+    <section className="next-projects"><SectionLabel>NEXT / 继续比较</SectionLabel><div>{otherProjects.map((item) => <Link href={`/${item.key}`} key={item.key}><small>{item.number}</small>{item.maker}</Link>)}</div></section>
+    <footer><Brand compact /><p>{project.maker} / RESULT DETAIL</p><Link href="/">对比全部版本</Link></footer>
+  </main>;
 }

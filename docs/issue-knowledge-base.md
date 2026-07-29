@@ -49,3 +49,13 @@
 - Resolution: rewrote the hero in plain language, added experiment conditions and a reading guide, explained each result's focus and suitable use case, added evidence-based verdicts and trade-offs, and expanded the individual result pages with implementation rationale and play instructions.
 - Regression evidence: rendered-HTML tests assert the experiment explanation, interpretation section, shared input, shared workflow, and three playable outcomes.
 - Prevention: every comparison page must explain the input, controlled conditions, evaluation method, evidence boundary, and practical takeaway before presenting a winner-like conclusion.
+
+## WEB-006 - Reference report structure was not represented in the first redesign
+
+- Status: resolved
+- Found during: user visual review against the supplied reference URL
+- Symptom: the page looked like a compact dark triptych, while the reference was a long editorial case-study report with numbered chapters, evidence tables, and a synthesis section.
+- Root cause: the implementation copied the previous page's card composition instead of first extracting the reference's information architecture and responsive rhythm.
+- Resolution: captured desktop and mobile source screenshots, rebuilt the home page as a six-part editorial report, and kept the three real game builds as the evidence layer.
+- Regression evidence: `design-qa/reference-vs-editorial.png`, `design-qa/editorial-implementation-mobile.png`, and 2/2 rendered-HTML tests pass.
+- Prevention: before adapting a reference, record its section sequence, density, responsive behavior, and evidence pattern; acceptance must compare those traits at the same viewport.
